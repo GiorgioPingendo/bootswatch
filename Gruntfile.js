@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     },
     clean: {
       build: {
-        src: ['*/build.less', '!global/build.less']
+        // src: ['*/build.less', '!global/build.less']
       }
     },
     concat: {
@@ -93,6 +93,7 @@ module.exports = function (grunt) {
     var files = {};
     var dist = {};
     concatSrc = 'global/build.less';
+    concatSrc = [ 'global/bootstrap-3.2.0.less',  theme + '/variables.less', theme + '/bootswatch.less'];
     concatDest = theme + '/build.less';
     lessDest = '<%=builddir%>/' + theme + '/bootstrap.css';
     lessSrc = [ theme + '/' + 'build.less' ];
@@ -103,8 +104,10 @@ module.exports = function (grunt) {
     grunt.config('less.dist.files', files);
     grunt.config('less.dist.options.compress', false);
 
-    grunt.task.run(['concat', 'less:dist', 'clean:build',
+    grunt.task.run(['concat', 'less:dist',
       compress ? 'compress:'+lessDest+':'+'<%=builddir%>/' + theme + '/bootstrap.min.css':'none']);
+    // grunt.task.run(['concat', 'less:dist', 'clean:build',
+    //   compress ? 'compress:'+lessDest+':'+'<%=builddir%>/' + theme + '/bootstrap.min.css':'none']);
   });
 
   grunt.registerTask('compress', 'compress a generic css', function(fileSrc, fileDst) {
