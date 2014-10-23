@@ -93,10 +93,10 @@ module.exports = function (grunt) {
     var files = {};
     var dist = {};
     concatSrc = 'global/build.less';
-    concatSrc = [ 'global/bootstrap-3.2.0.less',  theme + '/variables.less', theme + '/bootswatch.less'];
-    concatDest = theme + '/build.less';
+    concatSrc = [theme + '/variables.less', 'global/bootstrap-3.2.0.less', theme + '/bootswatch.less'];
+    concatDest = theme + '/' + theme + '.less';
     lessDest = '<%=builddir%>/' + theme + '/bootstrap.css';
-    lessSrc = [ theme + '/' + 'build.less' ];
+    lessSrc = [concatDest];
 
     dist = {src: concatSrc, dest: concatDest};
     grunt.config('concat.dist', dist);
