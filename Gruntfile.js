@@ -95,7 +95,7 @@ module.exports = function (grunt) {
     concatSrc = 'global/build.less';
     concatSrc = [theme + '/variables.less', 'global/bootstrap-3.2.0.less', theme + '/bootswatch.less'];
     concatDest = theme + '/' + theme + '.less';
-    lessDest = '<%=builddir%>/' + theme + '/bootstrap.css';
+    lessDest = '<%=builddir%>/' + theme + '/' +theme+".css";
     lessSrc = [concatDest];
 
     dist = {src: concatSrc, dest: concatDest};
@@ -105,7 +105,7 @@ module.exports = function (grunt) {
     grunt.config('less.dist.options.compress', false);
 
     grunt.task.run(['concat', 'less:dist',
-      compress ? 'compress:'+lessDest+':'+'<%=builddir%>/' + theme + '/bootstrap.min.css':'none']);
+      compress ? 'compress:'+lessDest+':'+'<%=builddir%>/' + theme + '/' +theme+'.min.css':'none']);
     // grunt.task.run(['concat', 'less:dist', 'clean:build',
     //   compress ? 'compress:'+lessDest+':'+'<%=builddir%>/' + theme + '/bootstrap.min.css':'none']);
   });
